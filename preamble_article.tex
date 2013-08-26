@@ -1,0 +1,173 @@
+\documentclass[fleqn,14pt]{article}
+\usepackage{extsizes}
+
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% \usepackage[danish]{babel}
+\usepackage[scaled=0.83]{helvet}
+% \usepackage{parskip}
+\usepackage{booktabs,tabularx,pgfplots,multicol}
+\usepackage{amsmath,icomma,amsmath,amsfonts,amssymb,graphicx,gensymb,url,commath}
+\usepackage{tikz,listings,hyperref,aurical,calc,subfig,pdfpages,longtable,textcomp,pdflscape}
+\usepackage{lastpage,xspace}
+\usepackage[section]{placeins}
+\usepackage[per-mode = symbol,detect-weight=true, detect-family=true]{siunitx}
+\usepackage[footnote,draft,danish,silent,nomargin]{fixme}
+\usepackage[nointegrals]{wasysym}
+\usepackage[font={small,sf},justification=justified,singlelinecheck=false]{caption}
+
+% Package setup
+\usetikzlibrary{shapes}
+\pgfplotsset{compat=newest}
+\lstset{
+  breaklines=true, 
+  language=VHDL,
+  basicstyle=\scriptsize\ttfamily, 
+  frame=single,
+  % columns=flexible, 
+  numbers=left, 
+  numberstyle=\tiny\sffamily, 
+  literate={ø}{{\o}}1 {æ}{{\ae}}1{å}{{\aa}}1,
+  showtabs=false,
+  showspaces=false,
+  showstringspaces=false,
+  captionpos=b,
+  keywordstyle=\color{blue!70!black},
+  commentstyle=\color{gray}
+}
+\lstdefinelanguage{picoblaze}{
+  sensitive=false,
+  morekeywords=[1]{
+    add, addcy, adddc, addcy, and, call, compare, comp,
+    dint, eint, fetch, input, jump, load, or, output,
+    return, returni, rl, rr, sl0, sl1, sla, slx, sr0, sr1,
+  sra, srx, store, sub, subcy, test, xor},
+  morecomment=[l]{;},
+  morestring=[b]",
+  morestring=[b]',
+}
+\lstdefinelanguage{constraintfile}{
+  morekeywords={NET, LOC},
+  sensitive=false,
+  morecomment=[l]\#,
+  morestring=[b]",
+}
+\lstdefinelanguage{diff}{
+  morecomment=[f][\color{blue!70!black}]{<},
+  morecomment=[f][\color{red!70!black}]{>},
+}
+\hypersetup{%
+  pdfpagelabels=true,%
+  plainpages=false,%
+  pdfauthor={Author(s)},%
+  pdftitle={Title},%
+  pdfsubject={Subject},%
+  bookmarksnumbered=true,%
+  colorlinks,%
+  citecolor=black,%
+  filecolor=black,%
+  linkcolor=black,%
+  urlcolor=black,%
+  pdfstartview=FitH%
+}
+\usepackage{memhfixc}
+\urlstyle{sf}
+\sisetup{output-decimal-marker = {,}, output-exponent-marker=\ensuremath{\mathrm{E}}, output-complex-root=j}
+\DeclareSIUnit[number-unit-product = \,]{\permil}{\textperthousand}
+
+
+% Custom commands
+\newenvironment{indledning}{\itshape}{\vskip 0.75cm}
+\newenvironment{tail}{\vskip 0.75cm\itshape}{}
+\newcommand{\cdref}[1] {
+  \par\begin{tabular}{ll}
+    \includegraphics[height=9pt]{img/folder} & \texttt{#1}
+  \end{tabular}
+}
+\newcommand{\arbejdsbladDato}[1] {
+  \begin{flushright}\itshape #1\end{flushright}
+  }
+\newcommand{\hex}[1] {
+  \texttt{#1}
+  }
+\def\itoc{I$^2$C\xspace}
+
+% Krav
+\newcounter{reqcount}
+\newcommand{\krav}[1]{%
+  \refstepcounter{reqcount}\label{#1}
+\item [Krav~\arabic{reqcount}] 
+}
+
+
+% Lengths
+\usepackage[top=2.5cm, bottom=2.5cm, left=1.7cm, right=1.7cm]{geometry}
+% \setlength{\headheight}{3em}  % For fancyhdr
+\setlength{\parskip}{0em}
+\setlength{\parindent}{2em}
+\setlength{\mathindent}{2em}  % Only defined for fleqn
+\renewcommand{\topfraction}{0.85}  % Figures
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.85}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+\usepackage[compact,noindentafter]{titlesec}
+
+\titlespacing{\chapter}{0em}{0em}{2em}
+\titlespacing{\section}{0em}{1em}{0.5em}
+\titlespacing{\subsection}{0pt}{1em}{0.5em}
+\titlespacing{\subsubsection}{0pt}{1em}{*0}
+\def\fatfont{\sffamily\bfseries}
+\titleformat{\chapter}[display]
+{}{}{0em}{\Huge\fatfont\thechapter\boldmath\quad}
+\titleformat*{\section}{\Large\fatfont\boldmath}
+\titleformat*{\subsection}{\large\fatfont\boldmath}
+\titleformat*{\subsubsection}{\normalsize\bfseries\boldmath}
+\titleformat*{\paragraph}{\normalsize\itshape}
+
+
+% Style
+% \usepackage{mathptmx}  % Times font
+
+\usepackage{fancyhdr}
+% \pagestyle{fancy}
+\fancyfoot{}{}{}
+\fancyhead[LO,RE]{\normalsize\leftmark}
+\fancyhead[LE,RO]{\normalsize\thepage}
+
+\renewcommand{\labelitemi}{\textendash}
+\renewcommand{\labelitemii}{\textendash}
+\renewcommand{\labelitemiii}{\textendash}
+
+% \let\tempone\itemize
+% \let\temptwo\enditemize
+% \renewenvironment{itemize}{%
+%     \tempone%
+%     % \setlength{\itemindent}{0em}%
+%     % \setlength{\leftmargin}{0em}%
+%     % \setlength{\itemsep}{-0.3em}%
+%     }{\temptwo}
+% \let\tempthree\enumerate
+% \let\tempfour\endenumerate
+% \renewenvironment{enumerate}{%
+%     \tempthree%
+%     % \setlength{\itemindent}{0em}%
+%     % \setlength{\leftmargin}{-.5em}%
+%     % \setlength{\itemsep}{-1mm}%
+%     }{\tempfour}
+
+
+% Graphics
+\graphicspath{{./images/}}
+
+
+% Packages, loaded later on
+\usepackage{csvsimple}
+\usepackage[american]{circuitikz}
+
+% COOL LOOKING FONT!!!
+% \usepackage{pdfrender}
+% \pdfrender{StrokeColor=black,TextRenderingMode=2,LineWidth=0.2pt}
