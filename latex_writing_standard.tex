@@ -16,8 +16,8 @@ As much of the work done as an engineering student at Aalborg University is docu
 This paper may be used by anyone without any restrictions. If you have any comments or suggestions please contact me at \texttt{soerenbnoergaard@gmail.com}.
 
 
-\tableofcontents
-\clearpage
+% \tableofcontents
+% \clearpage
 
 
 \section{File and directory names}
@@ -150,12 +150,12 @@ where dimensions may (basically) be \texttt{\{l, c, r\}} or \texttt{X} for long 
 \subsection{Label names and referencing}
 Labels are named\slash prefixed and references as follows as follows:
 \begin{verbatim}
-fig:<+label+>        ... see Figure~\ref{fig:<+label+>}. 
-tbl:<+label+>        ... see Table~\ref{tbl:<+label+>}.
-prt:<+label+>        ... see Part~\ref{prt:<+label+>}.
-cha:<+label+>        ... see Chapter~\ref{cha:<+label+>}.
-sec:<+label+>        ... see Section~\ref{sec:<+label+>}.
-lst:<+label+>        ... see Listing~\ref{lst:<+label+>}.
+\label{fig:<+label+>}        ... see Figure~\ref{fig:<+label+>}. 
+\label{tbl:<+label+>}        ... see Table~\ref{tbl:<+label+>}.
+\label{prt:<+label+>}        ... see Part~\ref{prt:<+label+>}.
+\label{cha:<+label+>}        ... see Chapter~\ref{cha:<+label+>}.
+\label{sec:<+label+>}        ... see Section~\ref{sec:<+label+>}.
+\label{lst:<+label+>}        ... see Listing~\ref{lst:<+label+>}.
 \end{verbatim}
 Note that the words like \texttt{Figure}, \texttt{Table}, etc.\ are all with a capital starting letter.\footnote{Note also, that there is no distinction between sections and subsections. Section types further indented, like subsubsections, are not numbered, and thus, should not be referenced.}
 
@@ -190,10 +190,10 @@ To input a source file from a \texttt{code} subdirectory:
                  label=lst:<+label+>]{../code/<+subdir+>/<+file+>}
 \end{verbatim}
 
-\clearpage
-\section*{TODO}
-\begin{itemize}
-\item Top\slash tail.
-\end{itemize}
+% \clearpage
+% \section*{TODO}
+% \begin{itemize}
+% \item Top\slash tail.
+% \end{itemize}
 
 \end{document}
