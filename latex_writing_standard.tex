@@ -109,7 +109,7 @@ Images follow the same naming conventions as described in Section~\ref{sec:files
 \subsection{\LaTeX\ code for figures and tables}
 To insert an image\slash figure:
 \begin{verbatim}
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     \includegraphics{img/<+file+>}
     \caption{<+caption text+>}
@@ -121,7 +121,7 @@ This way every figure is put exactly where you want it.
 
 To insert a table of variable width:
 \begin{verbatim}
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \begin{tabular}{<+dimensions+>}
 
@@ -135,7 +135,7 @@ where dimensions may (basically) be \texttt{\{l, c, r\}}.
 
 To insert a table of \emph{fixed} width:
 \begin{verbatim}
-\begin{table}[H]
+\begin{table}[htbp]
     \centering
     \begin{tabularx}{<+width+>}{<+dimensions+>}
 
